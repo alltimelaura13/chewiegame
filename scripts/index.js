@@ -1,9 +1,7 @@
+var game = new Game();
+
 window.onload = function() {
   document.getElementById("start-button").onclick = function() {
-    startGame();
+    game.start();
   };
-}
-
-function startGame() {
-  var game = new Game();
 }

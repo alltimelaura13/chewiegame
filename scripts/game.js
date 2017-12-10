@@ -1,6 +1,7 @@
 function Game() {
   this.canvas = new Canvas("canvas");
-  this.player = new Player ("canvas", "./images/player1- (1) 2.png");
+  this.player = new Player ("canvas", "./images/play14.png");
+  this.malo = new Malo ("canvas", "./images/malo12.jpg");
 
   window.onkeydown = this.onKeyDown.bind(this);
 }
@@ -18,6 +19,7 @@ Game.prototype.start = function() {
 Game.prototype.draw = function() {
   this.canvas.draw();
   this.player.draw();
+  this.malo.draw();
 
   window.requestAnimationFrame(this.draw.bind(this));
 }

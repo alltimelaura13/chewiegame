@@ -10,11 +10,11 @@ function Player(canvas, sprite) {
   // this.sprite.scale = 0.9;
   this.x = 0;
   this.y = 330;
-  this.speed = 10;
+  this.speed = 13;
 
   this.sprite.onload = (function() {
     this.sprite.isReady = true;
-    this.sprite.hFrames = 3;
+    this.sprite.hFrames = 2;
     this.sprite.vFrames = 1;
     this.sprite.frameWidth = Math.floor(this.sprite.width / this.sprite.hFrames);
     this.sprite.frameHeight = Math.floor(this.sprite.height / this.sprite.vFrames);
@@ -49,10 +49,10 @@ Player.prototype.onKeyDown = function(event) {
 }
 
 Player.prototype.moveRight = function() {
-  if (this.sprite.hfIndex >= 2) {
+  if (this.sprite.hfIndex >= 0) {
     this.sprite.hfIndex = 1;
   } else {
-    this.sprite.hfIndex++;
+    this.sprite.hfIndex ++;
   }
 
   this.x += this.speed;

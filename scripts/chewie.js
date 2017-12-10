@@ -48,9 +48,13 @@ Player.prototype.onKeyDown = function(event) {
   }
 }
 
+Player.prototype.unKeyUp = function(event) {
+  player.stop();
+}
+
 Player.prototype.moveRight = function() {
-  if (this.sprite.hfIndex >= 0) {
-    this.sprite.hfIndex = 1;
+  if (this.sprite.hfIndex >= 1) {
+    this.sprite.hfIndex = 0;
   } else {
     this.sprite.hfIndex ++;
   }

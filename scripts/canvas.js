@@ -13,7 +13,7 @@ function Canvas(id) {
   this.x = 0;
   this.y = 0;
   this.img.onload = function() {
-    //this.ctx.drawImage(this.img, this.x, this.y, this.canvas.width, this.canvas.height);}).bind(this);
+
   }.bind(this);
 }
 

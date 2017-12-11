@@ -14,16 +14,21 @@ function Canvas(id) {
   this.y = 0;
   this.img.onload = function() {
 
+
   }.bind(this);
 }
 
 Canvas.prototype.draw = function() {
+
   this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     if (this.x <= 0) {
       this.x = this.canvas.width;
+      var sound = new Audio ("./sounds/theme.mp3");
+      sound.play();
     }
       this.ctx.drawImage(this.img, this.x - this.canvas.width, this.y, this.canvas.width, this.canvas.height);
       this.ctx.drawImage(this.img, this.x, this.y, this.canvas.width, this.canvas.height);
       this.x -= 0.5;
 
-}
+
+};

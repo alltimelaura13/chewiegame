@@ -65,6 +65,15 @@ Game.prototype.onKeyUp = function(event) {
   }
 }
 
+
+
+
+
+Game.prototype.intersection = function(a, b) {
+  return !(a.x > (b.x + b.width-50) || (a.x + a.width) < b.x
+  || a.y > ((b.y ) + b.height-50) || ((a.y ) + a.height) < b.y);
+};
+
 Game.prototype.start = function() {
   window.requestAnimationFrame(this.draw.bind(this));
   this.malisimosCount = 0;
@@ -92,8 +101,6 @@ Game.prototype.start = function() {
 
     this.malisimos.forEach(function(f) {
       if (this.intersection(f, this.player)) {
-        var sound2 = new Audio ("./sounds/sound.mp3");
-        sound2.play();
         alert("Game Over!");
 
       }
@@ -102,10 +109,7 @@ Game.prototype.start = function() {
   }.bind(this), 40);
 };
 
-Game.prototype.intersection = function(a, b) {
-  return !(a.x > (b.x + b.width-50) || (a.x + a.width) < b.x
-  || a.y > ((b.y ) + b.height-50) || ((a.y ) + a.height) < b.y);
-};
+
 
 Game.prototype.draw = function() {
   this.canvas.draw();

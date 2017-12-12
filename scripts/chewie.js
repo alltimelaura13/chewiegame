@@ -2,6 +2,8 @@ var RIGHT_KEY = 39;
 
 var UP_KEY = 38;
 
+var LEFT_KEY = 37;
+
 function Player(canvas, sprite) {
   this.canvas = document.getElementById("canvas");
   this.ctx = this.canvas.getContext("2d");
@@ -17,7 +19,7 @@ function Player(canvas, sprite) {
   this.ground = 330;
   this.yMove = 0;
   this.vy = 0;
-  this.y += this.yMove * this.vy;
+  // this.y += this.yMove * this.vy;
 
 
 
@@ -48,7 +50,7 @@ Player.prototype.draw = function() {
       this.sprite.vfIndex * this.sprite.frameHeight,
       this.sprite.frameWidth,
       this.sprite.frameHeight,
-      Math.min(this.x, this.canvas.width / 2),
+      Math.min(this.x, this.canvas.width* 2/3),
       this.y,
       this.width,
       this.height
@@ -74,6 +76,23 @@ Player.prototype.onKeyDown = function(event) {
   if (event.keyCode == RIGHT_KEY) {
     this.moveRight();
   }
+  else if(event.keyCode == LEFT_KEY){
+    this.moveLeft();
+  }
+  else if(event.keyCode == UP_KEY){
+    this.moveUp();
+  }
+}
+
+
+Player.prototype.moveLeft = function() {
+  if (this.sprite.hfIndex >= 1) {
+    this.sprite.hfIndex = 0;
+  } else {
+    this.sprite.hfIndex++;
+  }
+
+  this.x -= this.speed;
 }
 
 
@@ -108,17 +127,18 @@ Player.prototype.onKeyUp = function(event) {
 
 
 Player.prototype.moveUp = function() {
-  if (this.keys[38]) {
+
     if (!this.isJumping) {
       this.isJumping = true;
-      this.yMove = -1;
+      var aux = this.y;
+      this.y = 250;
+      this.x +=50;
       this.sprite.hfIndex = 1;
       setTimeout(function() {
         this.sprite.hfIndex = 1;
-      }.bind(this), 175);
+      }.bind(this), 190);
       setTimeout(function() {
-        this.yMove = 1;
+        this.y = aux;
       }.bind(this), 330);
     }
-  }
 }

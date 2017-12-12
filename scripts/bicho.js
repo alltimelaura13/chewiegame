@@ -1,4 +1,4 @@
-function Malo(canvas, sprite) {
+function Bicho(canvas, sprite) {
   this.canvas = document.getElementById("canvas");
   this.ctx = this.canvas.getContext("2d");
 
@@ -7,8 +7,8 @@ function Malo(canvas, sprite) {
   this.sprite.isReady = false;
 
   this.x = 1000;
-  this.y = 310;
-  this.speed = 10;
+  this.y = 350;
+  this.speed = 50;
 
 
   this.sprite.onload = (function() {
@@ -26,12 +26,12 @@ function Malo(canvas, sprite) {
 }
 
 
-Malo.prototype.intervalo = function() {
-  setInterval(this.move(), 200);
+Bicho.prototype.intervalo = function() {
+  setInterval(this.move(), 50);
 }
 
 
-Malo.prototype.draw = function() {
+Bicho.prototype.draw = function() {
   if (this.sprite.isReady) {
     this.ctx.save();
     this.ctx.drawImage(
@@ -50,11 +50,9 @@ Malo.prototype.draw = function() {
 
 }
 
-Malo.prototype.move = function() {
+Bicho.prototype.move = function() {
   this.x--;
-  if(this.x < this.canvas.width/2){
-    this.speed -= 2;
-  }
+
   if (this.sprite.hfIndex >= 1) {
     this.sprite.hfIndex = 0;
 
@@ -65,7 +63,7 @@ Malo.prototype.move = function() {
 }
 
 
-Malo.prototype.update = function() {
+Bicho.prototype.update = function() {
   if (this.sprite.isReady == true) {
     this.move();
 

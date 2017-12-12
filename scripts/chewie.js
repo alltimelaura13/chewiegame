@@ -50,20 +50,21 @@ Player.prototype.draw = function() {
       this.sprite.vfIndex * this.sprite.frameHeight,
       this.sprite.frameWidth,
       this.sprite.frameHeight,
-      Math.min(this.x, this.canvas.width* 2/3),
+      Math.min(this.x, this.canvas.width * 3/4),
       this.y,
       this.width,
       this.height
     );
   }
-  if (this.isJumping && this.y >= this.ground) {
+
+  if (this.isJumping && this.y === this.ground) {
     this.isJumping = false;
     this.yMove = 0;
     this.sprite.hframes = 0;
     this.sprite.hfIndex = 1;
-    setTimeout(function() {
+    setInterval(function() {
       this.sprite.hfIndex = 0;
-    }.bind(this), 200);
+    }.bind(this), 5);
   }
 }
 
@@ -127,18 +128,19 @@ Player.prototype.onKeyUp = function(event) {
 
 
 Player.prototype.moveUp = function() {
-
-    if (!this.isJumping) {
-      this.isJumping = true;
-      var aux = this.y;
+    if (this.isJumping = true) {
+      // var aux = this.y;
       this.y = 250;
       this.x +=50;
       this.sprite.hfIndex = 1;
-      setTimeout(function() {
-        this.sprite.hfIndex = 1;
-      }.bind(this), 190);
-      setTimeout(function() {
-        this.y = aux;
-      }.bind(this), 330);
+      // setTimeout(function() {
+      //   this.sprite.hfIndex = 1;
+      // }.bind(this), 190);
+      setInterval(function() {
+        this.y = this.ground;
+      }.bind(this), 500);
+    } else {
+      this.isJumping = false;
+      this.y = this.ground;
     }
 }

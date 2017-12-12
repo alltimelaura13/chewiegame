@@ -28,7 +28,7 @@ Canvas.prototype.draw = function() {
     }
       this.ctx.drawImage(this.img, this.x - this.canvas.width, this.y, this.canvas.width, this.canvas.height);
       this.ctx.drawImage(this.img, this.x, this.y, this.canvas.width, this.canvas.height);
-      this.x -= 0.5;
+      this.x -= 0.2;
 
 
 };
